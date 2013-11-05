@@ -18,8 +18,9 @@ This is my first final project proposal. Passwordlet is a clone of [OnePassword]
 - if not logged in yet, clicking on the bookmarklet opens a popup dialog that lets users log in
 
 ##Schema##
-- username, password_digest, session_token in `User`
- 
+- username, password_digest, session_token in `User` (or use devise gem)
+- url, username, encrypted_password, user_id in `Domain`
+
 ##V2##
 - lets the user change master login credential
 - lets the user share accounts with other users

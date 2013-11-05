@@ -1,0 +1,16 @@
+
+<%= form_for @domain do |f| %>
+  <%= f.label(:name, "Domain name") %>
+  <%= f.text_field(:name) %>
+  <br>
+  <%= f.label(:url, "Domain URL") %>
+  <%= f.text_field(:url) %>
+  <br>
+  <%= f.label(:username, "Username") %>
+  <%= f.text_field(:username) %>
+  <br>
+  <%= f.label(:password, "Password") %>
+  <%= f.password_field(:password) %>
+  <br>
+  <%= f.submit("Add domain") %>
+<% end %>

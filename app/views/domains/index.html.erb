@@ -1,0 +1,13 @@
+<div class="domains">
+  <ul>
+  <% @domains.each do |domain| %>
+    <li>
+    <%= domain.name %><br>
+    <%= domain.url %><br>
+    <%= domain.username %><br>
+    <%= domain.password %><br>
+    <%= button_to "Log me in", login_domain_url(domain), :method => :get %>
+    </li>
+  <% end %>
+  </ul>
+</div>

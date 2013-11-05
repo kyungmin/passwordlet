@@ -5,8 +5,7 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,13 +20,14 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-gem 'nokogiri', require: 'nokogiri'
-gem 'mechanize', require: 'mechanize'
+gem 'backbone-on-rails'
+gem 'devise'
+gem 'nokogiri'
+gem 'mechanize'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0', require: 'bcrypt'
-
+#gem 'bcrypt-ruby', '~> 3.0.0', require: 'bcrypt'
+#gem 'openssl'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
@@ -42,5 +42,6 @@ group :development do
   gem 'debugger'
   gem 'better_errors'
   gem 'binding_of_caller'  
+  gem 'sqlite3'
 end
 
