@@ -23,6 +23,6 @@ module ApplicationHelper
       cookie_arr << cookie_str
     end
 
-    cookie_arr
+    cookie_arr.join
   end
 end
