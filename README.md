@@ -17,6 +17,9 @@ This is my first final project proposal. Passwordlet is a clone of [OnePassword]
 - if it doesn't find the password, it allows the user to add credential
 - if not logged in yet, clicking on the bookmarklet opens a popup dialog that lets users log in
 
+##Schema##
+- username, password_digest, session_token in `User`
+ 
 ##V2##
 - lets the user change master login credential
 - lets the user share accounts with other users
