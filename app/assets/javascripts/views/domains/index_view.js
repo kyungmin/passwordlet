@@ -29,11 +29,12 @@ Passwordlet.Views.IndexView = Backbone.View.extend({
           cookieStr += "expires=" + data[cookie].expires + "; ";
           cookieStr += "path=" + data[cookie].path + ";";
           document.cookie = cookieStr;
+          console.log(cookieStr)
         }
         window.location.href = domain.get("url");
       },
       error: function(model, response){
-        
+        console.log(response)
       }
     });
   }

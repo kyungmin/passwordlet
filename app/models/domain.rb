@@ -15,15 +15,20 @@ class Domain < ActiveRecord::Base
 
   def get_cookies(url, username, password)
     agent = Mechanize.new
-    page = agent.get(url) 
-    form = page.forms.first
+    page = agent.get(url)
 
-    username_field = form.field_with(:name => "username") # TODO: see if this works for other sites
-    password_field = form.field_with(:name => "password")
+    page.forms.each do |form|
+      if form.field_with(:type => "password")
+        if form.field_with(:type => "text")
+          form.field_with(:type => "text").value = username
+        else
+          form.field_with(:type => "email").value = username
+        end
+        form.field_with(:type => "password").value = password
+        form.submit
+      end
+    end  
 
-    username_field.value = username
-    password_field.value = password
-    form.submit
 
     agent.get(url)
 
