@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.cookies.2.2.0
 //= require underscore
 //= require backbone
 //= require passwordlet

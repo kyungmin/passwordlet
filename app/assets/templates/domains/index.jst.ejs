@@ -1,3 +1,4 @@
+
 <div class="domains">
   <a href="/domains/new">New domain</a>
   <ul>
@@ -6,9 +7,9 @@
       <%= domain.escape("name") %><br>
       <%= domain.escape("url") %><br>
       <%= domain.escape("username") %><br>
-
       <button class="log-me-in" data-id="<%= domain.id %>">Log me in</button>
     </li>
   <% }); %>
   </ul>
 </div>
+<div id="embed"></div>

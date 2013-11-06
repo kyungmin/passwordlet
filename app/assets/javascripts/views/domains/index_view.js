@@ -19,19 +19,24 @@ Passwordlet.Views.IndexView = Backbone.View.extend({
 
     var domainId = $(event.target).attr("data-id");
     var domain = this.collection.get(domainId);
+    
+    window.location.href = domain.get("url");
+
     $.ajax({
       type: "GET",
       url: "/domains/"+ domainId + "/login",
       success: function(data) {
+        console.log(window.location.href)
         for(var cookie in data) {
-          var cookieStr = "";
-          cookieStr += data[cookie].name + "=" + data[cookie].value + "; ";
-          cookieStr += "expires=" + data[cookie].expires + "; ";
-          cookieStr += "path=" + data[cookie].path + ";";
-          document.cookie = cookieStr;
-          console.log(cookieStr)
+          var options = {
+            domain: data[cookie].domain,
+            path: data[cookie].path,
+            expiresAt: new Date(data[cookie].expires),
+            secure: true
+          };
+          $.cookies.set(data[cookie].name, data[cookie].value, options);
         }
-        window.location.href = domain.get("url");
+
       },
       error: function(model, response){
         console.log(response)

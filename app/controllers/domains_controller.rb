@@ -12,8 +12,14 @@ class DomainsController < ApplicationController
   def login
     @domain = Domain.find(params[:id])
     @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
-    @cookies.to_json
-    render :json => @cookies
+    response.headers['Access-Control-Allow-Origin'] = "*"
+
+    @cookies.each do |cookie|
+      response.headers["Set-Cookie"] = cookie[1]["name"] + "=" + cookie[1]["value"] + "; Domain=" + cookie[1]["domain"] + "; Expires=" + cookie[1]["expires"] + "; Path=" + cookie[1]["path"] + ";"
+    end
+    
+#    redirect_to @domain.url
+    render :json => @cookies.to_json
   end
 
   def create
