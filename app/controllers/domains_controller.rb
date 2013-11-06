@@ -1,7 +1,7 @@
 class DomainsController < ApplicationController
   def index
     @domains = Domain.where(:user_id => current_user.id)
-    render :index
+    render :json => @domains
   end
 
   def new
@@ -12,8 +12,8 @@ class DomainsController < ApplicationController
   def login
     @domain = Domain.find(params[:id])
     @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
-    
-    render :text => @cookies
+    @cookies.to_json
+    render :json => @cookies
   end
 
   def create
@@ -21,11 +21,12 @@ class DomainsController < ApplicationController
     @domain.user_id = current_user.id
     
     if @domain.save
-      flash[:notice] = "Successfully added #{@domain.name}."
+      # flash[:notice] = "Successfully added #{@domain.name}."
+      render :json => @domain
     else
-      flash[:error] << @domain.errors.full_messages
+      render :json => @domain.errors.full_messages, :status => :unprocessable_entity
     end
-    redirect_to root_url
+    
   end
 
   def update

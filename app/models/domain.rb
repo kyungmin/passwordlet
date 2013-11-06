@@ -27,16 +27,16 @@ class Domain < ActiveRecord::Base
 
     agent.get(url)
 
-    cookie_arr = []
+    cookies = {}
     agent.cookies.each do |cookie|
-      cookie_str = "document.cookie = \""
-      cookie_str += cookie.name + "=" + cookie.value + '; '
-      cookie_str += "expires=" + cookie.expires.to_s + '; '
-      cookie_str += "path=" + cookie.path.to_s
-      cookie_str += "\";"
-      cookie_arr << cookie_str
+      c = {}
+      c["name"] = cookie.name
+      c["value"] = cookie.value
+      c["expires"] = cookie.expires.to_s
+      c["path"] = cookie.path.to_s
+      cookies[cookie.name] = c
     end
 
-    cookie_arr.join
+    cookies
   end
 end

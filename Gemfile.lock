@@ -170,6 +170,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   devise
+  ejs
   jquery-rails
   mechanize
   nokogiri

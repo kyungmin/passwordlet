@@ -1,5 +1,5 @@
 Passwordlet::Application.routes.draw do
-  root :to => "domains#index"
+  root :to => "homes#index"
   
   devise_for :users
   

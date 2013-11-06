@@ -21,6 +21,8 @@ end
 
 gem 'jquery-rails'
 gem 'backbone-on-rails'
+gem 'ejs'
+
 gem 'devise'
 gem 'nokogiri'
 gem 'mechanize'

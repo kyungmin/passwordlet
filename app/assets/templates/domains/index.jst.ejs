@@ -1,0 +1,13 @@
+<div class="domains">
+  <ul>
+  <% domains.forEach(function (domain) { %>
+    <li>
+      <%= domain.escape("name") %><br>
+      <%= domain.escape("url") %><br>
+      <%= domain.escape("username") %><br>
+
+      <button class="log-me-in" data-id="<%= domain.id %>">Log me in</button>
+    </li>
+  <% }); %>
+  </ul>
+</div>

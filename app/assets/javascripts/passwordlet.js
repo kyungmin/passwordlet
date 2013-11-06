@@ -4,7 +4,16 @@ window.Passwordlet = {
   Views: {},
   Routers: {},
   initialize: function() {
-    Routers
+    Passwordlet.domains = new Passwordlet.Collections.Domains();
+
+    Passwordlet.domains.fetch({
+      success: function () {
+        new Passwordlet.Routers.AppRouter({
+          collection: Passwordlet.domains
+        });
+        Backbone.history.start();        
+      }
+    });
   }
 };
 
