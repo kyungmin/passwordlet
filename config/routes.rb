@@ -3,6 +3,8 @@ Passwordlet::Application.routes.draw do
   
   devise_for :users
   
+  get "bookmarklet" => "bookmarklet#show"
+
   resources :domains do
     collection do
       get "login"
