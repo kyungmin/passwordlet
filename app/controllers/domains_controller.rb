@@ -17,7 +17,7 @@ class DomainsController < ApplicationController
       @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
       render :json => @cookies.to_json
     else
-      render :text => "can't find the domain", :status => :unprocessable_entity
+      render :json => "nothing"
     end
     # @cookies.each do |cookie|
     #   response.headers["Set-Cookie"] = cookie[1]["name"] + "=" + cookie[1]["value"] + "; Domain=" + cookie[1]["domain"] + "; Expires=" + cookie[1]["expires"] + "; Path=" + cookie[1]["path"] + ";"
