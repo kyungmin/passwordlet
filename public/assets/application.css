@@ -1,1 +1,9 @@
+body{
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 .login-bar{height:50px;width:100%;background:#333;z-index:1000;color:#fff}
