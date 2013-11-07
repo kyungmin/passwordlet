@@ -10,6 +10,8 @@ class DomainsController < ApplicationController
   end
 
   def login
+    response.headers['Access-Control-Allow-Origin'] = "*"
+
     @domain = Domain.find_by_url(params[:domain])
     if @domain
       @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
@@ -17,7 +19,6 @@ class DomainsController < ApplicationController
     else
       render :text => "can't find the domain", :status => :unprocessable_entity
     end
-#    response.headers['Access-Control-Allow-Origin'] = "*"
     # @cookies.each do |cookie|
     #   response.headers["Set-Cookie"] = cookie[1]["name"] + "=" + cookie[1]["value"] + "; Domain=" + cookie[1]["domain"] + "; Expires=" + cookie[1]["expires"] + "; Path=" + cookie[1]["path"] + ";"
     # end

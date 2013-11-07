@@ -2,7 +2,7 @@
   $.support.cors = true;
   $.ajax({
     type: "GET",
-    url: "http://gentle-taiga-4945.herokuapp.com/domains/login",
+    url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
     data: { domain: location.hostname },
     success: function(data) {
       var cookies = JSON.parse(data);
