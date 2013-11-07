@@ -20,8 +20,6 @@ Passwordlet.Views.IndexView = Backbone.View.extend({
     var domainId = $(event.target).attr("data-id");
     var domain = this.collection.get(domainId);
     
-    window.location.href = domain.get("url");
-
     $.ajax({
       type: "GET",
       url: "/domains/"+ domainId + "/login",

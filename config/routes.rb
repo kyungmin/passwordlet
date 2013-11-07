@@ -4,7 +4,7 @@ Passwordlet::Application.routes.draw do
   devise_for :users
   
   resources :domains do
-    member do
+    collection do
       get "login"
     end    
   end
