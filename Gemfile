@@ -22,7 +22,6 @@ end
 gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem 'ejs'
-gem 'uri'
 
 gem 'devise'
 gem 'nokogiri'
