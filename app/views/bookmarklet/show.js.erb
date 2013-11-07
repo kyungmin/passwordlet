@@ -6,8 +6,9 @@
     success: function(data) {
       if (data == "nothing") {
         if ($(".passwordlet-frame").length == 0) {
-          $('body').prepend("<iframe class='passwordlet-frame' style='width: 100%; height:200px; z-index:10000; border: 0;' src='https://gentle-taiga-4945.herokuapp.com:3000/'></iframe>");
-        }        
+
+          $('body').prepend("<div class='passwordlet-frame style='margin: 0 auto; width:100%; height:50px;'><object type='text/html' data='https://gentle-taiga-4945.herokuapp.com/' style=width':100%; height:100%; margin:1%;'></object></div>");
+        }
       } else {
         var cookies = JSON.parse(data);
         for(var cookie in cookies) {
@@ -22,7 +23,7 @@
       }
     }, error: function(data) {
         if ($(".passwordlet-frame").length == 0) {
-          $('body').prepend("<div class='passwordlet-frame login-bar'>Welcome to Passwordlet</div>");
+          $('body').prepend("<div class='passwordlet-frame login-bar'>Can't find a login form. Try again from a login page.</div>");
         }
     }
   });
