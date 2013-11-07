@@ -2,7 +2,8 @@ Passwordlet.Views.IndexView = Backbone.View.extend({
   template: JST['domains/index'],
   
   events: {
-    "click .log-me-in": "login"
+    "click .log-me-in": "login",
+    "click .delete": "remove"
   },
 
   render: function() {
@@ -12,6 +13,12 @@ Passwordlet.Views.IndexView = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  remove: function(event) {
+    var id = $(event.target).attr("data-id");
+    var domain = this.collection.get(id);
+    domain.destroy();
   },
 
   login: function(event) {

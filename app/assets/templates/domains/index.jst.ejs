@@ -1,15 +1,13 @@
-
 <div class="domains">
-  <a href="/domains/new">New domain</a>
+  <a href="/#domains/new">New domain</a>
   <ul>
   <% domains.forEach(function (domain) { %>
     <li>
       <%= domain.escape("name") %><br>
       <%= domain.escape("url") %><br>
       <%= domain.escape("username") %><br>
-      <button class="log-me-in" data-id="<%= domain.id %>">Log me in</button>
+      <div class="delete icon-close" data-id="<%= domain.id %>"></div>
     </li>
   <% }); %>
   </ul>
 </div>
-<div id="embed"></div>
