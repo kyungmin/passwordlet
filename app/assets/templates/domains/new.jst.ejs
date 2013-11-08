@@ -3,22 +3,27 @@
 <% } else { %>
   <h1>Edit domain</h1>
 <% } %>
+
 <div class="errors"></div>
 
 <% var action = (domain.isNew() ? "Create" : "Update"); %>
 
 <form id="domain_form">
-  <label for="domain_name">Name</label>
-  <input type="text" id="domain_name" name="domain[name]" value="<%= domain.escape("name") %>" type="text">
-  <br>
-  <label for="domain_url">URL</label>
-  <input type="text" id="domain_url" name="domain[url]" value="<%= domain.escape("url") %>"></input>
-  <br>
-  <label for="domain_username">Username</label>
-  <input type="text" id="domain_username" name="domain[username]" value="<%= domain.escape("username") %>"></input>
-  <br>
-  <label for="domain_password">Password</label>
-  <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("password") %>"></input>
-  <br>
+  <div class="row">
+    <label for="domain_name">Name</label>
+    <input type="text" id="domain_name" name="domain[name]" value="<%= domain.escape("name") %>" type="text" placeholder="i.e., Twitter" autofocus>
+  </div>
+  <div class="row">
+    <label for="domain_url">URL</label>
+    <input type="text" id="domain_url" name="domain[url]" value="<%= domain.escape("url") %>" placeholder="http://"></input>
+  </div>
+  <div class="row">
+    <label for="domain_username">Username</label>
+    <input type="text" id="domain_username" name="domain[username]" value="<%= domain.escape("username") %>" placeholder="Your username for this domain"></input>
+  </div>
+  <div class="row">
+    <label for="domain_password">Password</label>
+    <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("password") %>" placeholder="Your password for this domain"></input>
+  </div>
   <button type="submit"><%= action %></button>
 </form>

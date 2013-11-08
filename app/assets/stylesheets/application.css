@@ -11,3 +11,129 @@
  *= require_self
  *= require_tree .
  */
+body {
+  margin: 0;
+  padding: 30px 50px;
+  border: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;  
+  background-color: #f7f7f7;
+  color: #222;
+}
+
+h1, h2 {
+  color: #555;
+  font-weight: 200;
+}
+
+a {
+  text-decoration: none;
+  color: #15c;
+  font-size: 13px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+label {
+  color: #888;
+  display: inline-block;
+  font-weight: 200;
+  font-size: 13px;
+  width: 130px;  
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+  font-size: 14px;
+  padding: 5px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  width: 80%;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+  outline: none;
+}
+
+input[type="submit"], .button {
+  display: inline-block;
+  padding: 8px 15px;
+  box-shadow: 0px 1px 2px #ccc;
+  background-image: -webkit-linear-gradient(top,#18c,#16c);
+  color: #fff;
+  font-size: 12px;
+  font-family: Arial;
+  border: 0px;
+  border-radius: 3px;
+  margin-right: 13px;
+}
+
+.button:hover {
+  text-decoration: none;
+  background-image: -webkit-linear-gradient(top,#18c,#17c);
+}
+.notice {
+  padding: 8px 12px;
+  border-left: solid 3px #ffd76e;
+  background-color: #F7F0DD;
+  color: #333;
+  font-size: 12px;
+}
+
+.alert {
+  padding: 8px 12px;
+  border-left: solid 3px #ff4b1c;
+  background-color: #FDE9E5;
+  color: #333;
+  font-size: 12px;
+}
+
+.row {
+  width: 90%;
+  border-bottom: solid 1px #ddd;
+  padding: 10px 0;
+}
+
+.divider {
+  color: #ccc;
+}
+
+#domains {
+  padding-top: 30px;
+}
+
+.domain-name {
+  color: #333;
+  font-weight: bold;
+}
+
+.domain-url {
+  color: #009907;
+  font-size: 12px;
+}
+
+.domain-property {
+  float: right;
+}
+
+.domain-username-label {
+  color: #777;
+  font-size: 13px;
+}
+
+.domain-username {
+  color: #999;
+  font-size: 13px;
+  margin-right: 40px;
+}
+
+.delete {
+  display: inline-block;
+  opacity: 0.3;
+  margin: 1px 10px 0px 10px;
+}
+
+.delete:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

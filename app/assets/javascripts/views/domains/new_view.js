@@ -1,8 +1,8 @@
 Passwordlet.Views.NewView = Backbone.View.extend({
   template: JST['domains/new'],
-  
+
   initialize: function (options) {
-    this.listenTo(this.model, "add", this.render);
+    this.listenTo(this.model, "add change", this.render);
   },
 
   events: {

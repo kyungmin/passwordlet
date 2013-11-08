@@ -1,13 +1,18 @@
-<div class="domains">
-  <a href="/#domains/new">New domain</a>
-  <ul>
+<div id="domains">
+  <a class="button" href="#domains/new">New domain</a>
+  <br />
+  <br />
   <% domains.forEach(function (domain) { %>
-    <li>
-      <%= domain.escape("name") %><br>
-      <%= domain.escape("url") %><br>
-      <%= domain.escape("username") %><br>
-      <div class="delete icon-close" data-id="<%= domain.id %>"></div>
-    </li>
+    <div class="row">
+      <span class="domain-name"><%= domain.escape("name") %></span>
+      <span class="domain-url"><%= domain.escape("url") %></span>
+      <div class="domain-property">
+        <span class="domain-username-label">Username:</span>
+        <span class="domain-username"><%= domain.escape("username") %></span>
+        <a class="edit" href="#domains/<%= domain.id %>/edit" data-id="<%= domain.id %>">Edit</a>
+        <div class="delete icon-close" data-id="<%= domain.id %>"></div>
+
+      </div>
+    </div>
   <% }); %>
-  </ul>
 </div>

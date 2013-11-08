@@ -19,10 +19,6 @@ class DomainsController < ApplicationController
     else
       render :json => "nothing"
     end
-    # @cookies.each do |cookie|
-    #   response.headers["Set-Cookie"] = cookie[1]["name"] + "=" + cookie[1]["value"] + "; Domain=" + cookie[1]["domain"] + "; Expires=" + cookie[1]["expires"] + "; Path=" + cookie[1]["path"] + ";"
-    # end
-#    redirect_to @domain.url
   end
 
   def create
@@ -40,10 +36,14 @@ class DomainsController < ApplicationController
   end
 
   def update
-    redirect_to root_url
+    @domain = Domain.find(params[:id])
+    @domain.update_attributes(params[:domain])
+    render :json => @domain
   end
 
   def destroy
-    redirect_to root_url
+    @domain = Domain.find(params[:id])
+    @domain.destroy
+    render :json => "deleted"
   end
 end

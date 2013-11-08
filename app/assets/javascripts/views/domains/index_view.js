@@ -1,9 +1,12 @@
 Passwordlet.Views.IndexView = Backbone.View.extend({
   template: JST['domains/index'],
+
+  initialize: function (options) {
+    this.listenTo(this.collection, "add remove reset", this.render);
+  },
   
   events: {
-    "click .log-me-in": "login",
-    "click .delete": "remove"
+    "click .delete": "delete"
   },
 
   render: function() {
@@ -15,37 +18,11 @@ Passwordlet.Views.IndexView = Backbone.View.extend({
     return this;
   },
 
-  remove: function(event) {
+  delete: function(event) {
+    event.preventDefault();
     var id = $(event.target).attr("data-id");
     var domain = this.collection.get(id);
     domain.destroy();
-  },
-
-  login: function(event) {
-    event.preventDefault();
-
-    var domainId = $(event.target).attr("data-id");
-    var domain = this.collection.get(domainId);
-    
-    $.ajax({
-      type: "GET",
-      url: "/domains/"+ domainId + "/login",
-      success: function(data) {
-        console.log(window.location.href)
-        for(var cookie in data) {
-          var options = {
-            domain: data[cookie].domain,
-            path: data[cookie].path,
-            expiresAt: new Date(data[cookie].expires),
-            secure: true
-          };
-          $.cookies.set(data[cookie].name, data[cookie].value, options);
-        }
-
-      },
-      error: function(model, response){
-        console.log(response)
-      }
-    });
   }
+
 });
