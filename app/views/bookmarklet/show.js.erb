@@ -35,7 +35,9 @@
         zIndex:10000000
       });
       $("body").prepend(overlay);
-      $(".overlay").fadeIn(5000);
+      $(".overlay").fadeIn("slow", function(){
+        alert();
+      });
     }
   });
 
