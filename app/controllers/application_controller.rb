@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :cors_preflight_check
-  after_filter :cors_set_access_control_headers, :set_csrf_cookie_for_ng, :flash_to_headers
+  after_filter :cors_set_access_control_headers, :set_csrf_cookie_for_ng
 
 # For all responses in this controller, return the CORS access control headers.
 
@@ -39,15 +39,6 @@ class ApplicationController < ActionController::Base
 
   def set_csrf_cookie_for_ng
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
-  end
-
-  def flash_to_headers
-    return unless request.xhr?
-    response.headers['X-Message'] = flash[:alert] unless flash[:alert].blank?
-    response.headers['X-Message'] = flash[:notice] unless flash[:notice].blank?
-    response.headers['X-Message'] = flash[:error] unless flash[:error].blank?
-
-    flash.discard
   end
 
 protected
