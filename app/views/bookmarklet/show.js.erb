@@ -3,9 +3,9 @@
   showButton();
   showOverlay("Connecting to Passwordlet..");
 
-  $("#passwordlet-login-button").on("click", function (event) {
+  $("#passwordlet-login-button").click(function (event) {
     event.preventDefault();
-    
+
     $.ajax({
       type: "GET",
       url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
@@ -49,7 +49,7 @@
   }
 
   function showButton(message) {
-    var button = $("<div id='passwordlet-login-button' class='button'>Login</div>").css({
+    var button = $("<button id='passwordlet-login-button'>Login</button>").css({
       height: $(document).height(),
       position: "absolute",
       right: 10,
