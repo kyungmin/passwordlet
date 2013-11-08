@@ -10,6 +10,10 @@ class DomainsController < ApplicationController
   end
 
   def login
+    if !user_signed_in?
+      render :json => "not signed in"
+    end
+
     response.headers['Access-Control-Allow-Origin'] = "*"
 
     @domain = Domain.find_by_url(params[:domain])
@@ -17,7 +21,7 @@ class DomainsController < ApplicationController
       @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
       render :json => @cookies.to_json
     else
-      render :json => "nothing"
+      render :json => "domain not found"
     end
   end
 
