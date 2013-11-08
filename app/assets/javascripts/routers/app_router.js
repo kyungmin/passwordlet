@@ -1,7 +1,6 @@
 Passwordlet.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "index",
-    "domains/new": "new",
     "domains/:id/edit": "edit"
   },
 

@@ -30,7 +30,8 @@ class DomainsController < ApplicationController
       flash[:notice] = "Successfully added #{@domain.name}."
       redirect_to root_url
     else
-      render :json => @domain.errors.full_messages, :status => :unprocessable_entity
+      flash[:alert] = @domain.errors.full_messages
+      render :new
     end
     
   end

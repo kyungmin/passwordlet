@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1 class="title">Passwordlet</h1>
+<h1 class="title"><a href="/">Passwordlet</a></h1>
 <div class="nav">
   <% if current_user %>
     <%= link_to "Sign out", destroy_user_session_url, {:method => :delete} %>
@@ -20,7 +20,13 @@
   <p class="notice"><%= notice %></p>
 <% end %>
 <% if alert %>
-  <p class="alert"><%= alert %></p>
+  <% if alert.is_a?(Array) %>
+    <% alert.each do |alert_item| %>
+      <p class="alert"><%= alert_item %></p>
+    <% end %>
+  <% else %>
+    <p class="alert"><%= alert %></p>
+  <% end %>  
 <% end %>
   <%= yield %>
 

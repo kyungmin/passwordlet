@@ -23,17 +23,9 @@ Passwordlet.Views.NewView = Backbone.View.extend({
 
     var attr = $(event.currentTarget).serializeJSON();
     this.model.set(attr);
-
-    this.model.create(this.model, {
+    this.model.save(this.model, {
       success: function(data) {
         Backbone.history.navigate("", { trigger: true });
-      },
-      error: function(model, response){
-        $(".errors").append("<ul>");
-        response.responseJSON.forEach(function(error) {
-          $(".errors").append("<li>" + error + "</li>");
-        });
-        $(".errors").append("</ul>");
       }
     });
   }

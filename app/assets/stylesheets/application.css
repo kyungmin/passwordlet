@@ -25,6 +25,16 @@ h1, h2 {
   font-weight: 200;
 }
 
+h1.title a {
+  color: #555;
+  font-weight: 200;
+  font-size: 26px;
+}
+
+h1.title a:hover {
+  text-decoration: none;
+}
+
 a {
   text-decoration: none;
   color: #15c;
@@ -55,7 +65,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   outline: none;
 }
 
-input[type="submit"], .button {
+input[type="submit"], .button, button {
   display: inline-block;
   padding: 8px 15px;
   box-shadow: 0px 1px 2px #ccc;

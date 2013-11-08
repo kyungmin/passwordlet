@@ -1,12 +1,10 @@
 <% if (domain.isNew()) { %>
-  <h1>New domain</h1>
+<% $(".title").text("New domain") %>
 <% } else { %>
-  <h1>Edit domain</h1>
+<% $(".title").text("Update domain") %>
 <% } %>
 
-<div class="errors"></div>
-
-<% var action = (domain.isNew() ? "Create" : "Update"); %>
+<% var action = (domain.isNew() ? "Add domain" : "Update domain"); %>
 
 <form id="domain_form">
   <div class="row">
@@ -25,5 +23,6 @@
     <label for="domain_password">Password</label>
     <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("encrypted_password") %>" placeholder="Your password for this domain"></input>
   </div>
+  <br />
   <button type="submit"><%= action %></button>
 </form>

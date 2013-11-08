@@ -1,16 +1,21 @@
 <h1>New Domain</h1>
 <%= form_for @domain do |f| %>
+<div class="row">
   <%= f.label(:name, "Domain name") %>
-  <%= f.text_field(:name) %>
-  <br>
+  <%= f.text_field(:name, :placeholder => "Domain name") %>
+</div>
+<div class="row">
   <%= f.label(:url, "Domain URL") %>
-  <%= f.text_field(:url) %>
-  <br>
+  <%= f.text_field(:url, :placeholder => "http://") %>
+</div>
+<div class="row">
   <%= f.label(:username, "Username") %>
-  <%= f.text_field(:username) %>
-  <br>
+  <%= f.text_field(:username, :placeholder => "Your username for this domain") %>
+</div>
+<div class="row">
   <%= f.label(:password, "Password") %>
-  <%= f.password_field(:password) %>
-  <br>
+  <%= f.password_field(:password, :placeholder => "Your password for this domain") %>
+</div>
+<br>
   <%= f.submit("Add domain") %>
 <% end %>

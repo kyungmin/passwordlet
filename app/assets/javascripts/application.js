@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.serializeJSON
 //= require underscore
 //= require backbone
 //= require passwordlet
@@ -21,3 +22,9 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+
+$(document).ajaxError(function(event, request) {
+  var msg = request.getResponseHeader('X-Message');
+  if (msg) alert(msg);
+});
