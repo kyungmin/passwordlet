@@ -23,7 +23,7 @@
   </div>
   <div class="row">
     <label for="domain_password">Password</label>
-    <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("password") %>" placeholder="Your password for this domain"></input>
+    <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("encrypted_password") %>" placeholder="Your password for this domain"></input>
   </div>
   <button type="submit"><%= action %></button>
 </form>

@@ -7,8 +7,6 @@
       <span class="domain-name"><%= domain.escape("name") %></span>
       <span class="domain-url"><%= domain.escape("url") %></span>
       <div class="domain-property">
-        <span class="domain-username-label">Username:</span>
-        <span class="domain-username"><%= domain.escape("username") %></span>
         <a class="edit" href="#domains/<%= domain.id %>/edit" data-id="<%= domain.id %>">Edit</a>
         <div class="delete icon-close" data-id="<%= domain.id %>"></div>
 
