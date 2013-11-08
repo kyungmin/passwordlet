@@ -6,7 +6,7 @@
     data: { domain: location.hostname },
     success: function(data) {
       if (data == "nothing") {
-        showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/login");
+        showPasswordlet("https://gentle-taiga-4945.herokuapp.com/");
       } else {
         var cookies = JSON.parse(data);
         for(var cookie in cookies) {
@@ -20,7 +20,7 @@
         window.location.reload();
       }
     }, error: function(data) {
-      showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/login");
+      showPasswordlet("https://gentle-taiga-4945.herokuapp.com/");
     }
   });
 
