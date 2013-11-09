@@ -111,6 +111,8 @@ GEM
       rack (>= 0.4)
     rack-cors (0.2.8)
       rack
+    rack-jsonp-middleware (0.0.9)
+      rack
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -178,6 +180,7 @@ DEPENDENCIES
   nokogiri
   pg
   rack-cors
+  rack-jsonp-middleware
   rails (= 3.2.14)
   sass-rails (~> 3.2.3)
   sqlite3

@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'rack/jsonp'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -67,5 +68,7 @@ module Passwordlet
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
+
+    config.middleware.use Rack::JSONP
   end
 end
