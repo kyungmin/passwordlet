@@ -25,7 +25,7 @@
     contentType: "application/json"
   });
 
-  function setCookie(data) {
+  function setCookie(cookies) {
     for(var cookie in cookies) {
       var cookieStr = "";
       cookieStr += cookies[cookie].name + "=" + cookies[cookie].value + "; ";
