@@ -4,7 +4,7 @@
 
   $.ajax({
     type: "GET",
-    url: "http://localhost:3000/domains/login",
+    url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
     data: { domain: location.hostname },
     dataType: "jsonp",
     success: function(data) {
@@ -14,7 +14,6 @@
       } else if (data.message == "not signed in") {
         showOverlay("You are not logged in.");
       } else {
-
         setCookie(data);
         window.location.reload();
       }
