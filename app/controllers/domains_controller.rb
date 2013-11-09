@@ -17,6 +17,7 @@ class DomainsController < ApplicationController
     response.headers['Access-Control-Allow-Origin'] = "*"
 
     @domain = Domain.find_by_url(params[:domain])
+    
     if @domain
       @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
       render :json => @cookies.to_json, :callback => params['callback']
