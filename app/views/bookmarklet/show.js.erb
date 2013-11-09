@@ -18,11 +18,13 @@
         } else if (data == "not signed in") {
           showOverlay("You are not logged in");
         } else {
+          console.log(data);
           setCookie(data);
           window.location.reload();
         }
       },
       error: function(data) {
+        debugger
         showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/")
       },
       jsonp: 'jsonp'
