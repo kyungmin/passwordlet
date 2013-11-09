@@ -1,18 +1,4 @@
-(function(){
-  var v = "1.10.2";
-  
-  if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
-    var done = false;
-    var script = document.createElement("script");
-    script.src = "http://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
-    script.onload = script.onreadystatechange = function() {
-      if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-        done = true;
-        initMyBookmarklet();
-      }
-    };
-    document.getElementsByTagName("head")[0].appendChild(script);
-  }
+(function(e,a,g,h,f,c,b,d){if(!(f=e.jQuery)||g>f.fn.jquery||h(f)){c=a.createElement("script");c.type="text/javascript";c.src="https://ajax.googleapis.com/ajax/libs/jquery/"+g+"/jquery.min.js";c.onload=c.onreadystatechange=function(){if(!b&&(!(d=this.readyState)||d=="loaded"||d=="complete")){h((f=e.jQuery).noConflict(1),b=1);f(c).remove()}};a.documentElement.childNodes[0].appendChild(c)}})(window,document,"1.3.2",function($,L){
 
   showOverlay("Connecting to Passwordlet..");
 
@@ -89,11 +75,11 @@
     });
 
     if (typeof message != 'undefined') {
-      var overlayText = $("<span>" + message + "</span>").css({
+      var overlayText = $("<div>" + message + "</div>").css({
+        margin: "30px 50px",
         color: "#fff",
-        fontSize: "50px",
-        paddingTop: "100px",
-        margin: "0 auto",
+        fontSize: "24px",
+        fontWeight: "100",
         fontFamily: "Helvetica Neue, Arial, sans-serif",
         zIndex:10000001
       });
@@ -101,11 +87,7 @@
     }
    
     $("body").prepend(overlay);
-    $(".overlay").fadeIn(1000, function() {
-      setTimeout(function() {
-        $(".overlay").fadeOut();  
-      }, 3000);
-    });
+    $(".overlay").fadeIn(200);
   }
 
 });
