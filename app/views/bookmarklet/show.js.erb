@@ -7,22 +7,32 @@
     url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
     data: { domain: location.hostname },
     dataType: "jsonp",
-    success: function(data) {
-      hideOverlay();
-      if (data.message == "domain not found") {
-        showOverlay("This domain is not registered in Passwordlet.");
-      } else if (data.message == "not signed in") {
-        showOverlay("You are not logged in.");
-      } else {
-        setCookie(data);
-        window.location.reload();
-      }
-    },
-    error: function(data) {
-      showPasswordlet("https://gentle-taiga-4945.herokuapp.com/")
-    },
     async: false,
-    contentType: "application/json"
+    contentType: "application/json",
+    success: function(data) {
+      $.ajax({
+        type: "GET",
+        url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
+        data: { domain: location.hostname },
+        dataType: "jsonp",
+        async: false,
+        contentType: "application/json",
+        success: function(data) {
+          hideOverlay();
+          if (data.message == "domain not found") {
+            showOverlay("This domain is not registered in Passwordlet.");
+          } else if (data.message == "not signed in") {
+            showOverlay("You are not logged in.");
+          } else {
+            setCookie(data);
+            window.location.reload();
+          }
+        },
+        error: function(data) {
+          showPasswordlet("https://gentle-taiga-4945.herokuapp.com/")
+        }
+      });
+    }
   });
 
   function setCookie(cookies) {

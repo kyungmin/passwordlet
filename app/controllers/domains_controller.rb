@@ -9,26 +9,9 @@ class DomainsController < ApplicationController
     render :new  
   end
 
-  def login
-    if !user_signed_in?
-      render :json => {"message" => "not signed in"}, :callback => params['callback']
-    end
-
-    response.headers['Access-Control-Allow-Origin'] = "*"
-
-    @domain = Domain.find_by_url(params[:domain])
-    
-    if @domain
-      @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
-      render :json => @cookies.to_json, :callback => params['callback']
-    else
-      render :json => {"message" => "domain not found"}, :callback => params['callback']
-    end
-  end
-
   def create
     @domain = Domain.new(params[:domain])
-    @domain.url = URI.parse(params[:domain][:url]).host
+    @domain.url = URI.parse(params[:domain][:url]).to_s
     @domain.user_id = current_user.id
     
     if @domain.save
@@ -37,8 +20,24 @@ class DomainsController < ApplicationController
     else
       flash[:alert] = @domain.errors.full_messages
       render :new
+    end    
+  end
+
+  def user_signed_in
+    if !user_signed_in?
+      render :json => {"message" => "not signed in"}, :callback => params['callback']
     end
-    
+  end
+
+  def login
+    @domain = Domain.where('url LIKE ?', '%' + params[:domain] + '%').first
+
+    if @domain
+      @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
+      render :json => @cookies.to_json, :callback => params['callback']
+    else
+      render :json => {"message" => "domain not found"}, :callback => params['callback']
+    end
   end
 
   def update
