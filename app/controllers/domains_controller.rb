@@ -17,15 +17,12 @@ class DomainsController < ApplicationController
     response.headers['Access-Control-Allow-Origin'] = "*"
 
     @domain = Domain.find_by_url(params[:domain])
-
+    
     if @domain
       @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
-      render :json => params[:callback] + '("' + @cookies.to_json + '");'
-      # render :json => @cookies.to_json, :callback => params['callback']
+      render :json => @cookies.to_json, :callback => params['callback']
     else
-      response = {"message" => "domain not found"}
-      render :json => params[:callback] + '("' + response + '");'
-      # render :json => {"message" => "domain not found"}, :callback => params['callback']
+      render :json => {"message" => "domain not found"}, :callback => params['callback']
     end
   end
 
