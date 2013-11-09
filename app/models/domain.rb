@@ -18,6 +18,10 @@ class Domain < ActiveRecord::Base
     agent.user_agent_alias = 'Mac Safari'
     agent.follow_meta_refresh = true
 
+    unless url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
+      url = "http://#{url}"
+    end
+
     page = agent.get(url)
 
     page.forms.each do |form|
