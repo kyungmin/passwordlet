@@ -6,6 +6,7 @@
     type: "GET",
     url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
     data: { domain: location.hostname },
+    dataType: "jsonp",
     success: function(data) {
       if (data == "domain not found") {
         showOverlay("This site is not registered in Passwordlet.");
@@ -19,7 +20,8 @@
     },
     error: function(data) {
       showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/")
-    }
+    },
+    jsonp: 'jsonp'
   });
 
   function setCookie(data) {
