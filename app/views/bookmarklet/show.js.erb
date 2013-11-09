@@ -4,7 +4,7 @@
 
   $.ajax({
     type: "GET",
-    url: "http://localhost:3000/domains/login",
+    url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
     data: { domain: location.hostname },
     dataType: "jsonp",
     success: function(data) {
@@ -22,7 +22,6 @@
       showPasswordlet("https://gentle-taiga-4945.herokuapp.com/")
     },
     async: false,
-    jsonpCallback: 'jsonCallback',
     contentType: "application/json"
   });
 
