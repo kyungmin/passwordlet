@@ -4,16 +4,17 @@
 
   $.ajax({
     type: "GET",
-    url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
+    url: "http://localhost:3000/domains/login",
     data: { domain: location.hostname },
     dataType: "jsonp",
     success: function(data) {
-      if (data == "domain not found") {
+      hideOverlay();
+      if (data.message == "domain not found") {
         showOverlay("This domain is not registered in Passwordlet.");
-      } else if (data == "not signed in") {
+      } else if (data.message == "not signed in") {
         showOverlay("You are not logged in.");
       } else {
-        console.log(data);
+
         setCookie(data);
         window.location.reload();
       }
@@ -26,7 +27,7 @@
   });
 
   function setCookie(data) {
-    var cookies = JSON.parse(data);
+    var cookies = JSON.parse(data.message);
     for(var cookie in cookies) {
       var cookieStr = "";
       cookieStr += cookies[cookie].name + "=" + cookies[cookie].value + "; ";
@@ -60,6 +61,10 @@
 
     $("body").prepend(button);
 
+  }
+
+  function hideOverlay() {
+    $(".overlay").remove();
   }
 
   function showOverlay(message) {
