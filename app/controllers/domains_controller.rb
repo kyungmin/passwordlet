@@ -19,7 +19,7 @@ class DomainsController < ApplicationController
     @domain = Domain.find_by_url(params[:domain])
     if @domain
       @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
-      render :json => @cookies.to_json
+      render :json => @cookies.to_json, :callback => params['callback']
     else
       render :json => {"message" => "domain not found"}, :callback => params['callback']
     end
