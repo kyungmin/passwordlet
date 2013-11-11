@@ -9,12 +9,10 @@
     async: false,
     contentType: "application/json",
     success: function(data) {
-      hideOverlay();
-
       if (data.message == "not signed in") {
-        showOverlay("You are not logged in.");
-        setTimeOut(function() {
-          showPasswordlet("https://gentle-taiga-4945.herokuapp.com/users/sign_in");  
+        showOverlay("Please log in to Passwordlet.");
+        setTimeout(function() {
+          showPasswordlet("https://gentle-taiga-4945.herokuapp.com/users/sign_in");
           hideOverlay();
         }, 1000);
       } else {
