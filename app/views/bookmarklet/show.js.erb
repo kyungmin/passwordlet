@@ -4,34 +4,50 @@
 
   $.ajax({
     type: "GET",
-    url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
+    url: "https://gentle-taiga-4945.herokuapp.com/domains/signed_in",
     data: { domain: location.hostname },
     dataType: "jsonp",
     async: false,
     contentType: "application/json",
     success: function(data) {
-      $.ajax({
-        type: "GET",
-        url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
-        data: { domain: location.hostname },
-        dataType: "jsonp",
-        async: false,
-        contentType: "application/json",
-        success: function(data) {
+      if (data.message == "not signed in") {
+        showOverlay("You are not logged in.");
+        setTimeOut(function() {
+          showPasswordlet("https://gentle-taiga-4945.herokuapp.com/users/sign_in");  
           hideOverlay();
-          if (data.message == "domain not found") {
-            showOverlay("This domain is not registered in Passwordlet.");
-          } else if (data.message == "not signed in") {
-            showOverlay("You are not logged in.");
-          } else {
-            setCookie(data);
-            window.location.reload();
+        }, 1000);
+      } else {
+        $.ajax({
+          type: "GET",
+          url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
+          data: { domain: location.hostname },
+          dataType: "jsonp",
+          async: false,
+          contentType: "application/json",
+          success: function(data) {
+            hideOverlay();
+
+            if (data.message == "domain not found") {
+              showOverlay("This domain is not registered in Passwordlet.");
+              setTimeOut(function() {
+                showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/new");
+                hideOverlay();
+              }, 1000);
+            } else {
+              setCookie(data);
+              window.location.reload();
+              showOverlay("You are good to go!");
+            }
+          },
+          error: function(data) {
+            showOverlay("Something went wrong.");
+            setTimeOut(function() {
+              showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/new");
+              hideOverlay();
+            }, 2000);
           }
-        },
-        error: function(data) {
-          showPasswordlet("https://gentle-taiga-4945.herokuapp.com/")
-        }
-      });
+        });
+      }
     }
   });
 
@@ -47,28 +63,16 @@
   }
 
   function showPasswordlet(url) {
-    if ($(".passwordlet-frame").length == 0) {
-      $('body').prepend("<div class='passwordlet-frame' style='margin: 0; padding: 0; border: 0; position: absolute; right: 20px; width: 400px; height: 400px; z-index: 10000000; box-shadow: 0px 0px 3px #ccc; background-color: #fff; margin: 20px 20px 0 0;'><object type='text/html' data='" + url + "' style='width:100%; height:100%;'></object><button class='close'>Close</button></div>");
+    window.open(url, 'Passwordlet', 'width=400, height=400').focus();
 
-      $(".close").click(function(event) {
-        event.preventDefault();
-        $(".passwordlet-frame").remove();
-      });
+    // if ($(".passwordlet-frame").length == 0) {
+    //   $('body').prepend("<div class='passwordlet-frame' style='margin: 0; padding: 0; border: 0; position: absolute; right: 20px; width: 400px; height: 400px; z-index: 10000000; box-shadow: 0px 0px 3px #ccc; background-color: #fff; margin: 20px 20px 0 0;'><object type='text/html' data='" + url + "' style='width:100%; height:100%;'></object><button class='close'>Close</button></div>");
+
+    //   $(".close").click(function(event) {
+    //     event.preventDefault();
+    //     $(".passwordlet-frame").remove();
+    //   });
     }
-  }
-
-  function showButton(message) {
-    var button = $("<button id='passwordlet-login-button'>Login</button>").css({
-      height: $(document).height(),
-      position: "absolute",
-      right: 10,
-      top: 10,
-      opacity: 0.9,
-      zIndex:10000000
-    });
-
-    $("body").prepend(button);
-
   }
 
   function hideOverlay() {

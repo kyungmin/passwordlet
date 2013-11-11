@@ -23,12 +23,6 @@ class DomainsController < ApplicationController
     end    
   end
 
-  def user_signed_in
-    if !user_signed_in?
-      render :json => {"message" => "not signed in"}, :callback => params['callback']
-    end
-  end
-
   def login
     @domain = Domain.where('url LIKE ?', '%' + params[:domain] + '%').first
 
