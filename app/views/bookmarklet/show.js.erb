@@ -28,7 +28,7 @@
 
             if (data.message == "domain not found") {
               showOverlay("This domain is not registered in Passwordlet.");
-              setTimeOut(function() {
+              setTimeout(function() {
                 showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/new");
                 hideOverlay();
               }, 1000);
@@ -36,11 +36,14 @@
               setCookie(data);
               window.location.reload();
               showOverlay("You are good to go!");
+              setTimeout(function(){
+                $(".overlay").remove();
+              }, 2000);
             }
           },
           error: function(data) {
             showOverlay("Something went wrong.");
-            setTimeOut(function() {
+            setTimeout(function() {
               showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/new");
               hideOverlay();
             }, 2000);
@@ -62,7 +65,7 @@
   }
 
   function showPasswordlet(url) {
-    window.open(url, 'Passwordlet', 'width=400, height=400').focus();
+    window.open(url, 'Passwordlet', 'width=400, height=400, left=100, top=100').focus();
   }
 
   function hideOverlay() {
@@ -82,6 +85,18 @@
       zIndex:10000000
     });
 
+    var closeButton = $("<div class='close'></div>").css({
+      width: "30px",
+      height: "30px",
+      position: "absolute",
+      top: "30px",
+      right: "30px",
+      opacity: 0.8,
+      backgroundImage: 'url("https://gentle-taiga-4945.herokuapp.com/assets/close.png")'
+    });
+
+    $(overlay).prepend(closeButton);
+
     if (typeof message != 'undefined') {
       var overlayText = $("<div>" + message + "</div>").css({
         margin: "30px 50px",
@@ -93,9 +108,24 @@
       });
       $(overlay).prepend(overlayText);
     }
-   
+
     $("body").prepend(overlay);
     $(".overlay").fadeIn(200);
+
+    $(".close").mouseenter(function(){
+      $(this).css({
+        opacity: 1,
+        cursor: "pointer"
+      });
+    }).mouseleave(function(){
+      $(this).css({
+        opacity: 0.8
+      });
+    });
+
+    $(".close").click(function(){
+      $(".overlay").remove();
+    });
   }
 
 });
