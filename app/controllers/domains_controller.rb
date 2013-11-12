@@ -22,7 +22,7 @@ class DomainsController < ApplicationController
   end
 
   def login
-    @domain = Domain.where('url LIKE ?', '%' + params[:domain] + '%').first
+    @domain = Domain.where('domain_url LIKE ?', '%' + params[:domain] + '%').first
 
     if @domain
       @cookies = @domain.get_cookies(@domain.domain_url, @domain.domain_username, @domain.password)
