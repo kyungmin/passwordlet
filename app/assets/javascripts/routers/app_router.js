@@ -1,6 +1,7 @@
 Passwordlet.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "index",
+    "domains/new": "new",
     "domains/:id/edit": "edit"
   },
 
@@ -14,6 +15,7 @@ Passwordlet.Routers.AppRouter = Backbone.Router.extend({
   new: function() {
     var domain = new Passwordlet.Models.Domain();
     var newView = new Passwordlet.Views.NewView({
+      collection: Passwordlet.domains,
       model: domain
     });
     this._swapView(newView);

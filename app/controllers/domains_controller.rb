@@ -11,15 +11,13 @@ class DomainsController < ApplicationController
 
   def create
     @domain = Domain.new(params[:domain])
-    @domain.url = URI.parse(params[:domain][:url]).to_s
+    @domain.domain_url = URI.parse(params[:domain][:domain_url]).to_s
     @domain.user_id = current_user.id
     
     if @domain.save
-      flash[:notice] = "Successfully added #{@domain.name}."
-      redirect_to root_url
+      render :json => @domain
     else
-      flash[:alert] = @domain.errors.full_messages
-      render :new
+      render :json => @domain.errors.full_messages
     end    
   end
 
@@ -27,7 +25,7 @@ class DomainsController < ApplicationController
     @domain = Domain.where('url LIKE ?', '%' + params[:domain] + '%').first
 
     if @domain
-      @cookies = @domain.get_cookies(@domain.url, @domain.username, @domain.password)
+      @cookies = @domain.get_cookies(@domain.domain_url, @domain.domain_username, @domain.password)
       render :json => @cookies.to_json, :callback => params['callback']
     else
       render :json => {"message" => "domain not found"}, :callback => params['callback']
@@ -43,6 +41,6 @@ class DomainsController < ApplicationController
   def destroy
     @domain = Domain.find(params[:id])
     @domain.destroy
-    render :json => "deleted"
+    render :json => { "message" => "domain deleted" }
   end
 end

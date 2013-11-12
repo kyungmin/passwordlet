@@ -1,15 +1,15 @@
+<% $(".title").text("All domains") %>
 <div id="domains">
-  <a class="button" href="domains/new">New domain</a>
+  <a class="button" href="#domains/new">New domain</a>
   <br />
   <br />
   <% domains.forEach(function (domain) { %>
     <div class="row">
-      <span class="domain-name"><%= domain.escape("name") %></span>
-      <span class="domain-url"><%= domain.escape("url") %></span>
+      <div class="domain-name"><%= domain.escape("name") %></div>
+      <div class="domain-url"><a href="<%= domain.escape("domain_url") %>"><%= domain.escape("domain_url") %></a></div>
       <div class="domain-property">
         <a class="edit" href="#domains/<%= domain.id %>/edit" data-id="<%= domain.id %>">Edit</a>
         <div class="delete icon-close" data-id="<%= domain.id %>"></div>
-
       </div>
     </div>
   <% }); %>

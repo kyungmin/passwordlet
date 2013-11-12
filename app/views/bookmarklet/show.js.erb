@@ -29,8 +29,7 @@
             if (data.message == "domain not found") {
               showOverlay("This domain is not registered in Passwordlet.");
               setTimeout(function() {
-                showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/new");
-                hideOverlay();
+                showPasswordlet("https://gentle-taiga-4945.herokuapp.com/#domains/new");
               }, 1000);
             } else {
               setCookie(data);
@@ -42,11 +41,7 @@
             }
           },
           error: function(data) {
-            showOverlay("Something went wrong.");
-            setTimeout(function() {
-              showPasswordlet("https://gentle-taiga-4945.herokuapp.com/domains/new");
-              hideOverlay();
-            }, 2000);
+            showOverlay("Oops, something went wrong.");
           }
         });
       }

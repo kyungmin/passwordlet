@@ -118,12 +118,21 @@ input[type="submit"], .button, button {
 }
 
 .domain-url {
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.domain-url a {
   color: #009907;
-  font-size: 12px;
+  font-size: 12px;  
 }
 
 .domain-property {
   float: right;
+  margin-top: -28px;
 }
 
 .domain-username-label {
@@ -146,4 +155,8 @@ input[type="submit"], .button, button {
 .delete:hover {
   cursor: pointer;
   opacity: 0.5;
+}
+
+#pubkey {
+  display: none;
 }

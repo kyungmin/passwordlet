@@ -15,6 +15,8 @@
 //= require jquery.serializeJSON
 //= require underscore
 //= require backbone
+//= require aes
+//= require openpgp
 //= require passwordlet
 //= require_tree ../templates
 //= require_tree ./models

@@ -22,11 +22,30 @@ Passwordlet.Views.NewView = Backbone.View.extend({
     event.preventDefault();
 
     var attr = $(event.currentTarget).serializeJSON();
+
+    var success = function () {
+      Backbone.history.navigate("", { trigger: true });
+    };
+
+    var error = function (model, response) {
+      $(".errors").append("<ul>");
+      response.responseJSON.forEach(function(error) {
+        $(".errors").append("<li>" + error + "</li>");
+      });
+      $(".errors").append("</ul>");
+    };
+
     this.model.set(attr);
-    this.model.save(this.model, {
-      success: function(data) {
-        Backbone.history.navigate("", { trigger: true });
-      }
-    });
+    if (this.model.isNew()){
+      this.collection.create(this.model, {
+        success: success,
+        error: error
+      });      
+    } else {
+      this.model.save({}, {
+        success: success,
+        error: error
+      })
+    }
   }
 });

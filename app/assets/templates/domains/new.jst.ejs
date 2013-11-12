@@ -7,21 +7,22 @@
 <% var action = (domain.isNew() ? "Add domain" : "Update domain"); %>
 
 <form id="domain_form">
+  <input type="hidden" name="domain[user_id]" value="<%= $("#current-user-id").text() %>"></input>
   <div class="row">
     <label for="domain_name">Name</label>
     <input type="text" id="domain_name" name="domain[name]" value="<%= domain.escape("name") %>" type="text" placeholder="i.e., Twitter" autofocus>
   </div>
   <div class="row">
     <label for="domain_url">URL</label>
-    <input type="text" id="domain_url" name="domain[url]" value="<%= domain.escape("url") %>" placeholder="http://"></input>
+    <input type="text" id="domain_url" name="domain[domain_url]" value="<%= domain.escape("domain_url") %>" placeholder="http://"></input>
   </div>
   <div class="row">
     <label for="domain_username">Username</label>
-    <input type="text" id="domain_username" name="domain[username]" value="<%= domain.escape("username") %>" placeholder="Your username for this domain"></input>
+    <input type="text" id="domain_username" name="domain[domain_username]" value="<%= domain.escape("domain_username") %>" placeholder="Your username for this domain"></input>
   </div>
   <div class="row">
     <label for="domain_password">Password</label>
-    <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("encrypted_password") %>" placeholder="Your password for this domain"></input>
+    <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("password") %>" placeholder="Your password for this domain"></input>
   </div>
   <br />
   <button type="submit"><%= action %></button>

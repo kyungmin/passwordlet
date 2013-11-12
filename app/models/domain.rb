@@ -1,16 +1,19 @@
+require 'openssl'
+
 class Domain < ActiveRecord::Base
   attr_reader :password
-  attr_accessible :name, :url, :username, :password, :user_id
-  validates :name, :url, :username, :password, :encrypted_password, :user_id, :presence => true
+  attr_accessible :name, :domain_url, :domain_username, :password, :user_id
+  validates :name, :domain_url, :domain_username, :domain_password, :user_id, :presence => true
+  
   belongs_to :user
 
   def password=(password)
     @password = password
-    self.encrypted_password = password #BCrypt::Password.create(password)
+    self.domain_password = encrypt(password)
   end
 
   def password
-    self.encrypted_password
+    decrypt(self.domain_password)
   end
 
   def get_cookies(url, username, password)
@@ -52,4 +55,23 @@ class Domain < ActiveRecord::Base
 
     cookies
   end
+
+  private
+
+  def encrypt(plain_data)
+    cipher = OpenSSL::Cipher::Cipher.new('aes-256-cbc')
+    cipher.encrypt
+    cipher.key = ENV["AES_KEY"]
+    cipher.iv = ENV["IV"]
+    cipher.update(plain_data) + cipher.final
+  end
+
+  def decrypt(encrypted_data)
+    cipher = OpenSSL::Cipher::Cipher.new('aes-256-cbc')
+    cipher.decrypt
+    cipher.key = ENV["AES_KEY"]
+    cipher.iv = ENV["IV"]
+    cipher.update(encrypted_data) + cipher.final
+  end
+
 end
