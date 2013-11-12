@@ -63,7 +63,9 @@ class Domain < ActiveRecord::Base
     cipher.encrypt
     cipher.key = ENV["AES_KEY"]
     cipher.iv = ENV["IV"]
-    cipher.update(plain_data) + cipher.final
+    encrypted = cipher.update(plain_data)
+    encrypted << cipher.final
+    Base64.encode64(encrypted).encode('utf-8')
   end
 
   def decrypt(encrypted_data)
@@ -71,7 +73,9 @@ class Domain < ActiveRecord::Base
     cipher.decrypt
     cipher.key = ENV["AES_KEY"]
     cipher.iv = ENV["IV"]
-    cipher.update(encrypted_data) + cipher.final
+    decoded_data = Base64.decode64(encrypted_data.encode('ascii-8bit'))
+    decrypted = cipher.update(decoded_data)
+    decrypted << cipher.final
   end
 
 end
