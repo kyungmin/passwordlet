@@ -21,7 +21,7 @@ class Domain < ActiveRecord::Base
     agent.user_agent_alias = 'Mac Safari'
     agent.follow_meta_refresh = true
 
-    unless url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
+    unless url[/\Ahttp:\/\//] || self.domain_url[/\Ahttps:\/\//]
       url = "http://#{url}"
     end
 
