@@ -7,7 +7,6 @@
 <% var action = (domain.isNew() ? "Add domain" : "Update domain"); %>
 
 <form id="domain_form">
-  <input type="hidden" name="domain[user_id]" value="<%= $("#current-user-id").text() %>"></input>
   <div class="row">
     <label for="domain_name">Name</label>
     <input type="text" id="domain_name" name="domain[name]" value="<%= domain.escape("name") %>" type="text" placeholder="i.e., Twitter" autofocus>
