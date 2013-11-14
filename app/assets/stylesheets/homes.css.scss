@@ -13,7 +13,7 @@ h1.home {
 
 .section {
   background-image: -webkit-linear-gradient(top, #f3f3f3, #f9f9f9);
-  padding: 30px 300px;
+  padding: 30px 15%;
 
   & p {
     color: #555;
@@ -121,15 +121,17 @@ p.disclaimer {
 }
 
 .behind-the-scenes {
-  height: 300px;
+  height: 220px;
   padding-top: 50px;
 
   & p.one, & p.two, & p.three, & p.four {
     font-family: "Helvetica Neue", Arial, sans-serif;
     font-size: 18px;
-    margin-top: 50px;
-    font-weight: 200;
+    position: absolute;
     text-align: center;
+    margin-top: 50px;
+    margin-left: -7%;
+    font-weight: 200;
     visibility: hidden;
   }
 
@@ -139,9 +141,9 @@ p.disclaimer {
     height: 100px;
     visibility: hidden;
     z-index: 2;
-    float: right;
+    display: inline-block;
     position: absolute;
-    right: 500px;
+    margin-left: 40%;
   }
 
   & #key {
@@ -150,16 +152,17 @@ p.disclaimer {
     height: 100px;
     visibility: hidden;
     z-index: 2;
-    float: left;
+    display: inline-block;
     position: absolute;
-    left: 450px;
+    margin-left: 7%;
   }
 
   & .passwordlet-icon {
     background: url('passwordlet-icon.png');
     width: 100px;
     height: 100px;
-    margin-left: 100px;
+    position: absolute;
+    margin-left: 7%;
     display: inline-block;
   }
 
@@ -167,16 +170,17 @@ p.disclaimer {
     background: url('user-interface.png');
     width: 100px;
     height: 100px;
-    margin-left: 200px;
+    position: absolute;
+    margin-left: 40%;
     display: inline-block;
   }
 
   & .ion-refresh {
     font-size: 18px;
     opacity: 0.6;
-    width: 143px;
-    margin: 57px auto 0;
-    display: none;
+    margin: 7% 35%;
+    visibility: hidden;
+
     &:hover {
       cursor: pointer;
       opacity: 0.8;

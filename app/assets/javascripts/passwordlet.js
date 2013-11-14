@@ -6,16 +6,14 @@ window.Passwordlet = {
   initialize: function() {
     Passwordlet.domains = new Passwordlet.Collections.Domains();
 
-    Passwordlet.domains.fetch({
-      success: function () {
-        new Passwordlet.Routers.AppRouter({
-          collection: Passwordlet.domains
-        });
-        Backbone.history.start();        
-      }
+    new Passwordlet.Routers.AppRouter({
+      collection: Passwordlet.domains
     });
+    Backbone.history.start();
   }
 };
+
+var play = true;
 
 $(document).ready(function(){
   Passwordlet.initialize();
@@ -24,96 +22,94 @@ $(document).ready(function(){
     Backbone.history.navigate("", { trigger: true });
   });
 
-  $("#replay").click(function(){
-    alert();
-    playBTS();
-  });
-
   $(window).scroll(function() {
     if (inView(".how-it-works")) {
       if ($(".step-1").css("visibility") == "hidden") {
-        $(".step-1").css("visibility", "visible").addClass('animated bounceIn');
+        animate(".step-1", "bounceIn");
+
         setTimeout(function() {
-          $(".step-2").css("visibility", "visible").addClass('animated bounceIn');
+          animate(".step-2", "bounceIn");
+
           setTimeout(function() {
-            $(".step-3").css("visibility", "visible").addClass('animated bounceIn');
+            animate(".step-3", "bounceIn");
           }, 200);
         }, 200);
       }
     }
 
     if (inView(".behind-the-scenes")) {
-
-      if ($("#key").css("visibility") == "hidden") {
+      if (play) {
         playBTS();
       }
     }
   });
 
+  $("#replay").click(function(){
+    resetAnimation();
+    playBTS();
+  });
 });
 
-function inView(elem)
-{
-    var docViewTop = $(window).scrollTop();
-    var docViewBottom = docViewTop + $(window).height();
-
-    var elemTop = $(elem).offset().top;
-    var elemBottom = elemTop + $(elem).height();
-
-    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-}
-
 function playBTS() {
-  $("#replay").hide();
+  play = false;
 
-  $("#key").css({
-    top: $(".passwordlet-icon").offset().top,
-    visibility: "visible"
-    }).addClass('animated bounceIn');
-
-  $(".one").css("visibility", "visible").addClass('animated flipInX');
+  animate("#key", "bounceIn");
+  animate(".one", "flipInX");
 
   setTimeout(function() {
-    $("#key").animate({
-      left: "+=250px"
-    }, 900);
+    $("#key").animate({ marginLeft: "+=33%" }, 800);
 
     setTimeout(function(){
-      $("#key").hide();
-      $("#cookie").css({
-        top: $(".passwordlet-icon").offset().top,
-        visibility: "visible"
-        }).addClass('animated bounceIn');
+      exit("#key", "fadeOut");
 
-        $(".one").hide();
-        $(".two").css("visibility", "visible").addClass('animated flipInX');
-            
+      $("#key").css({ marginLeft: "40%" });
+      animate("#cookie", "bounceIn");
+
       setTimeout(function(){
-        $("#cookie").animate({
-          right: "+=300px"
-        }, 500);
+        exit(".one", "flipOutX");
+        animate(".two", "flipInX");            
+        $("#cookie").animate({ marginLeft: "-=33%" }, 500);
 
         setTimeout(function(){
-          $("#cookie").animate({
-            right: "-=300px"
-          }, 500);
-          $(".two").hide();
-          $(".three").css("visibility", "visible").addClass('animated flipInX');
+          exit(".two", "flipOutX");
+          animate(".three", "flipInX");
+          $("#cookie").animate({ marginLeft: "+=33%" }, 500);
 
           setTimeout(function(){
-            $(".three").hide();
-            $(".four").css("visibility", "visible").addClass('animated flipInX');
-            $("#cookie").addClass('animated bounceOut');
+            exit(".three", "flipOutX");
+            exit("#cookie", "bounceOut");
+            animate(".four", "flipInX");
 
             setTimeout(function() {
-              $(".four").hide();
-              $(".ion-refresh").css("visibility", "visible").fadeIn();
-            });
-
+              exit(".four", "flipOutX");
+              $("#replay").css("visibility", "visible");
+            }, 1200);
           }, 1500);
-
         }, 1700);
       }, 1200);
     }, 1400);
   });
+}
+
+function animate(elem, className) {
+  $(elem).css("visibility", "visible").addClass('animated ' + className);
+}
+
+function exit(elem, className) {
+  $(elem).css("visibility", "hidden").addClass('animated ' + className);
+}
+
+function resetAnimation() {
+  $("#key").css({ marginLeft: "7%" });
+  $("#key, #cookie, .one, .two, .three, .four").removeClass("animated bounceIn bounceOut fadeOut flipInX flipOutX");
+  $("#replay").css("visibility", "hidden");
+}
+
+function inView(elem) {
+  var docViewTop = $(window).scrollTop();
+  var docViewBottom = docViewTop + $(window).height();
+  var elemTop = $(elem).offset().top;
+  var elemBottom = elemTop + $(elem).height();
+
+  return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }

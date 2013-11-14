@@ -11,18 +11,24 @@ Passwordlet.Routers.AppRouter = Backbone.Router.extend({
       var homeView = new Passwordlet.Views.HomeView();
       this._swapView(homeView);
     } else {
-      var indexView = new Passwordlet.Views.IndexView({
-        collection: Passwordlet.domains
+      var that = this;
+      that._fetchDomains(function(domains) {
+        var indexView = new Passwordlet.Views.IndexView({
+          collection: domains
+        });
+        that._swapView(indexView);        
       });
-      this._swapView(indexView);
     }
   },
 
   index: function() {
-    var indexView = new Passwordlet.Views.IndexView({
-      collection: Passwordlet.domains
+    var that = this;
+    that._fetchDomains(function(domains) {
+      var indexView = new Passwordlet.Views.IndexView({
+        collection: domains
+      });
+      that._swapView(indexView);        
     });
-    this._swapView(indexView);
   },
 
   new: function() {
@@ -61,5 +67,15 @@ Passwordlet.Routers.AppRouter = Backbone.Router.extend({
     this._prevView = newView;
     newView.render();
     $(".content").html(newView.$el);
+  },
+
+  _fetchDomains: function (callback) {
+    var domains = Passwordlet.domains;
+    domains.fetch({
+      success: function () {
+        callback(domains);
+      }
+    });
   }
+
 });
