@@ -23,4 +23,5 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;  
   background-color: #f7f7f7;
   color: #222;
+  min-width: 900px;
 }

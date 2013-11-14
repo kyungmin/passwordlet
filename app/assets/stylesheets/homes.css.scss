@@ -36,7 +36,7 @@ h1.home {
 }
 
 .call-to-action {
-  padding-bottom: 30px;
+  padding-bottom: 70px;
   text-align: center;
 }
 
@@ -46,6 +46,24 @@ h1.home {
   font-weight: 500;
   padding-top: 20px;
   padding-bottom: 40px;
+  display: block;
+}
+
+.coachmark-icon {
+  background-image: url('coachmark.png');
+  width: 30px;
+  height: 35px;
+  display: inline-block;
+  position: absolute;
+  margin-left: -170px;
+  margin-top: 35px;
+}
+
+.coachmark-help {
+  font-size: 13px;
+  color: #444;
+  font-weight: 300;
+  padding-top: 20px;
   display: block;
 }
 

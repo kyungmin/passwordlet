@@ -27,7 +27,7 @@ class Domain < ActiveRecord::Base
 
     page = agent.get(url)
 
-    page.form.field_with(:type => "password") do |f|
+    page.form do |f|
       if f.field_with(:type => "text")
         f.field_with(:type => "text").value = username
       else
