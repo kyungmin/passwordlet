@@ -104,6 +104,16 @@ p.disclaimer {
 
 .behind-the-scenes {
   height: 300px;
+  padding-top: 50px;
+
+  & p.one, & p.two, & p.three, & p.four {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    margin-top: 50px;
+    font-weight: 200;
+    text-align: center;
+    visibility: hidden;
+  }
 
   & #cookie {
     background: url('donut.png');
@@ -114,7 +124,6 @@ p.disclaimer {
     float: right;
     position: absolute;
     right: 500px;
-    top: 1240px;
   }
 
   & #key {
@@ -122,26 +131,38 @@ p.disclaimer {
     width: 100px;
     height: 100px;
     visibility: hidden;
+    z-index: 2;
     float: left;
     position: absolute;
     left: 450px;
-    top: 1240px;
   }
 
   & .passwordlet-icon {
     background: url('passwordlet-icon.png');
     width: 100px;
     height: 100px;
-    float: left;
     margin-left: 100px;
+    display: inline-block;
   }
 
   & .website-icon {
     background: url('user-interface.png');
     width: 100px;
     height: 100px;
-    float: right; 
-    margin-right: 200px;
+    margin-left: 200px;
+    display: inline-block;
+  }
+
+  & .ion-refresh {
+    font-size: 18px;
+    opacity: 0.6;
+    width: 143px;
+    margin: 57px auto 0;
+    display: none;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
   }
 
 }

@@ -24,6 +24,11 @@ $(document).ready(function(){
     Backbone.history.navigate("", { trigger: true });
   });
 
+  $("#replay").click(function(){
+    alert();
+    playBTS();
+  });
+
   $(window).scroll(function() {
     if (inView(".how-it-works")) {
       if ($(".step-1").css("visibility") == "hidden") {
@@ -39,56 +44,25 @@ $(document).ready(function(){
 
     if (inView(".behind-the-scenes")) {
 
-      if ($("#cookie").css("visibility") == "hidden") {
-        $("#key").css({
-          visibility: "visible"
-          }).addClass('animated bounceIn');
-
-        setTimeout(function() {
-        $("#key").animate({
-          left: "+=250px"
-        }, 900);
-
-          setTimeout(function(){
-            $("#key").hide();
-            $("#cookie").css({
-              visibility: "visible"
-              }).addClass('animated bounceIn');
-
-            setTimeout(function(){
-              $("#cookie").animate({
-                right: "+=300px"
-              }, 500);
-
-              setTimeout(function(){
-                $("#cookie").animate({
-                  right: "-=300px"
-                }, 500);
-
-                setTimeout(function(){
-                  $("#cookie").addClass('animated bounceOut');
-                });
-              }, 1000);
-            }, 1000);
-          }, 1100);
-        });
+      if ($("#key").css("visibility") == "hidden") {
+        playBTS();
       }
     }
   });
 
-   if ($(window).height() > 500) {
-      if ($(".step-1").is(":visible") == false) {
+  if ($(window).height() > 500) {
+    if ($(".step-1").is(":visible") == false) {
+      setTimeout(function() {
+        $(".step-1").css("visibility", "visible").addClass('animated bounceIn');
         setTimeout(function() {
-          $(".step-1").css("visibility", "visible").addClass('animated bounceIn');
+          $(".step-2").css("visibility", "visible").addClass('animated bounceIn');
           setTimeout(function() {
-            $(".step-2").css("visibility", "visible").addClass('animated bounceIn');
-            setTimeout(function() {
-              $(".step-3").css("visibility", "visible").addClass('animated bounceIn');
-            }, 200);
+            $(".step-3").css("visibility", "visible").addClass('animated bounceIn');
           }, 200);
-        }, 100);
-      }
+        }, 200);
+      }, 100);
     }
+  }
 
 });
 
@@ -101,4 +75,59 @@ function inView(elem)
     var elemBottom = elemTop + $(elem).height();
 
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+function playBTS() {
+  $("#replay").hide();
+
+  $("#key").css({
+    top: $(".passwordlet-icon").offset().top,
+    visibility: "visible"
+    }).addClass('animated bounceIn');
+
+  $(".one").css("visibility", "visible").addClass('animated flipInX');
+
+  setTimeout(function() {
+    $("#key").animate({
+      left: "+=250px"
+    }, 900);
+
+    setTimeout(function(){
+      $("#key").hide();
+      $("#cookie").css({
+        top: $(".passwordlet-icon").offset().top,
+        visibility: "visible"
+        }).addClass('animated bounceIn');
+
+        $(".one").hide();
+        $(".two").css("visibility", "visible").addClass('animated flipInX');
+            
+      setTimeout(function(){
+        $("#cookie").animate({
+          right: "+=300px"
+        }, 500);
+
+        setTimeout(function(){
+          $("#cookie").animate({
+            right: "-=300px"
+          }, 500);
+          $(".two").hide();
+          $(".three").css("visibility", "visible").addClass('animated flipInX');
+
+          setTimeout(function(){
+            $(".three").hide();
+            $(".four").css("visibility", "visible").addClass('animated flipInX');
+            $("#cookie").addClass('animated bounceOut');
+
+            setTimeout(function() {
+              $(".four").hide();
+              $(".ion-refresh").css("visibility", "visible").fadeIn();
+            });
+
+          }, 1500);
+
+        }, 1700);
+      }, 1200);
+    }, 1400);
+  });
 }

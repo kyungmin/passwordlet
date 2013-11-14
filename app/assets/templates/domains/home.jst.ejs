@@ -18,16 +18,21 @@
 
 <div class="section">
   <h3>Behind the scenes</h3>
-  <p>With your permission, Passwordlet logs in to the domain using a library called <a href="http://mechanize.rubyforge.org/">Mechanize</a>. It then grabs the cookies and sets them to your browser. Once the cookie is set, you're safely logged in without manually entering your credentials. Read my <a href="">blog post</a> to learn more about technical challanges that I encountered during implementation.</p>
+  <p>When you click the JavaScript bookmarklet, Passwordlet logs in to the domain using a library called <a href="http://mechanize.rubyforge.org/">Mechanize</a>. It then grabs the cookies and sets them to your browser. Once the cookie is set, you're safely logged in without manually having entered your credentials. Read my <a href="">blog post</a> to learn more about technical challanges that I encountered during the implementation.</p>
   
   <div class="behind-the-scenes">
     <div id="key"></div>
     <div id="cookie"></div>
     <div class="passwordlet-icon"></div>
     <div class="website-icon"></div>
+    <div id="replay" class="ion-refresh replay">Replay</div>
+    <p class="one">Passwordlet logs in to the domain using your credentials.</p>
+    <p class="two">The domain sends cookies to Passwordlet.</p>
+    <p class="three">Passwordlet sets the cookies to the browser.</p>
+    <p class="four">Tada! You're now logged in.</p>
   </div>
 
-  <p class="disclaimer"><b>Disclaimer:</b> Most sites block logging in from different regions at the same time. Since Heroku runs apps from multiple regions, you might encounter login failures with some popular sites.</p>
+  <p class="disclaimer"><b>Disclaimer:</b> Some sites block logging in from different regions at the same time. Since Heroku runs apps from multiple regions, you might encounter login failures with some popular sites.</p>
 </div>
 
 <div class="section">
