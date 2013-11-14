@@ -35,7 +35,6 @@ class Domain < ActiveRecord::Base
           form.field_with(:type => "email").value = username
         end
         form.field_with(:type => "password").value = password
-        binding.pry
         form.submit
       end
     end
