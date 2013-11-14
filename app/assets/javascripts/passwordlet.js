@@ -50,20 +50,6 @@ $(document).ready(function(){
     }
   });
 
-  if ($(window).height() > 500) {
-    if ($(".step-1").is(":visible") == false) {
-      setTimeout(function() {
-        $(".step-1").css("visibility", "visible").addClass('animated bounceIn');
-        setTimeout(function() {
-          $(".step-2").css("visibility", "visible").addClass('animated bounceIn');
-          setTimeout(function() {
-            $(".step-3").css("visibility", "visible").addClass('animated bounceIn');
-          }, 200);
-        }, 200);
-      }, 100);
-    }
-  }
-
 });
 
 function inView(elem)
