@@ -1,8 +1,21 @@
 Passwordlet.Routers.AppRouter = Backbone.Router.extend({
   routes: {
-    "": "index",
+    "": "home",
+    "domains": "index",
     "domains/new": "new",
     "domains/:id/edit": "edit"
+  },
+
+  home: function() {
+    if ($("#current-user-id").text() == "") {
+      var homeView = new Passwordlet.Views.HomeView();
+      this._swapView(homeView);
+    } else {
+      var indexView = new Passwordlet.Views.IndexView({
+        collection: Passwordlet.domains
+      });
+      this._swapView(indexView);
+    }
   },
 
   index: function() {

@@ -7,29 +7,40 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1 class="title"><a href="/">Passwordlet</a></h1>
-<div class="nav">
-  <% if current_user %>
-    <%= link_to "Sign out", destroy_user_session_url, {:method => :delete} %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_url %> <span class="divider">|</span> 
-    <%= link_to "Sign up", new_user_registration_url %>
-  <% end %>
-</div>
-<div id="loading"></div>
-<% if notice %>
-  <p class="notice"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <% if alert.is_a?(Array) %>
-    <% alert.each do |alert_item| %>
-      <p class="alert"><%= alert_item %></p>
+  <h1 class="title">Passwordlet</h1>
+  <div class="nav">
+    <%= link_to "Feedback", "" %>
+    <div style="display: inline-block; width: 16px;"></div>
+    <% if current_user %>
+      <%= link_to "Sign out", destroy_user_session_url, {:method => :delete} %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_url %> <span class="divider">
     <% end %>
-  <% else %>
-    <p class="alert"><%= alert %></p>
-  <% end %>  
-<% end %>
-  <%= yield %>
-
+  </div>
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <% if alert.is_a?(Array) %>
+      <% alert.each do |alert_item| %>
+        <p class="alert"><%= alert_item %></p>
+      <% end %>
+    <% else %>
+      <p class="alert"><%= alert %></p>
+    <% end %>  
+  <% end %>
+    <%= yield %>
+  <div class="footer">
+    Made by <a href="http://kyungm.in">Kyungmin Kim</a> © 2013
+  </div>
 </body>
+<script type="text/data" id="current-user-id"><%= current_user.id if user_signed_in? %></script>
+<script type="text/javascript">
+  if (document.location.pathname == "/") {
+    $("h1.title").hide();
+  } else {
+    $("h1.title").show();
+  }
+</script>
 </html>
+

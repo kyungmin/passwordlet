@@ -24,9 +24,3 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
-
-
-$(document).ajaxError(function(event, request) {
-  var msg = request.getResponseHeader('X-Message');
-  if (msg) alert(msg);
-});

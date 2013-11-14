@@ -1,6 +1,8 @@
 class DomainsController < ApplicationController
   def index
-    @domains = Domain.where(:user_id => current_user.id)
+    if user_signed_in?
+      @domains = Domain.where(:user_id => current_user.id)
+    end
     render :json => @domains
   end
 

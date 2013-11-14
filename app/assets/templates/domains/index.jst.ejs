@@ -1,8 +1,12 @@
-<% $(".title").text("All domains") %>
-<div id="domains">
+<% $("h1.title").show() %>
+<div id="domains" class="section">
   <a class="button" href="#domains/new">New domain</a>
   <br />
-  <br />
+  <div class="row">
+  <% if (domains.length == 0) { %>
+      <p>No domains are registered yet. Register <a href="#domains/new">new domain</a>.</p>
+  <% } %>
+  </div>
   <% domains.forEach(function (domain) { %>
     <div class="row">
       <div class="domain-name"><%= domain.escape("name") %></div>

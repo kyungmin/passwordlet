@@ -1,28 +1,27 @@
-<% if (domain.isNew()) { %>
-<% $(".title").text("New domain") %>
-<% } else { %>
-<% $(".title").text("Update domain") %>
-<% } %>
+<% $("h1.title").show() %>
+<div class="section">
+  <% var form_title = (domain.isNew() ? "New domain" : "Update domain") %>
+  <% var action = (domain.isNew() ? "Add domain" : "Update domain") %>
+  <h3 class="form-title"><%= form_title %></h3>
+  <form id="domain_form">
+    <div class="row">
+      <label for="domain_name">Name</label>
+      <input type="text" id="domain_name" name="domain[name]" value="<%= domain.escape("name") %>" type="text" placeholder="i.e., Twitter" autofocus>
+    </div>
+    <div class="row">
+      <label for="domain_url">URL</label>
+      <input type="text" id="domain_url" name="domain[domain_url]" value="<%= domain.escape("domain_url") %>" placeholder="http://">
+    </div>
+    <div class="row">
+      <label for="domain_username">Username</label>
+      <input type="text" id="domain_username" name="domain[domain_username]" value="<%= domain.escape("domain_username") %>" placeholder="Your username for this domain">
+    </div>
+    <div class="row">
+      <label for="domain_password">Password</label>
+      <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("password") %>" placeholder="Your password for this domain">
+    </div>
+    <br />
+    <button type="submit"><%= action %></button>
+  </form>
+</div>
 
-<% var action = (domain.isNew() ? "Add domain" : "Update domain"); %>
-
-<form id="domain_form">
-  <div class="row">
-    <label for="domain_name">Name</label>
-    <input type="text" id="domain_name" name="domain[name]" value="<%= domain.escape("name") %>" type="text" placeholder="i.e., Twitter" autofocus>
-  </div>
-  <div class="row">
-    <label for="domain_url">URL</label>
-    <input type="text" id="domain_url" name="domain[domain_url]" value="<%= domain.escape("domain_url") %>" placeholder="http://"></input>
-  </div>
-  <div class="row">
-    <label for="domain_username">Username</label>
-    <input type="text" id="domain_username" name="domain[domain_username]" value="<%= domain.escape("domain_username") %>" placeholder="Your username for this domain"></input>
-  </div>
-  <div class="row">
-    <label for="domain_password">Password</label>
-    <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("password") %>" placeholder="Your password for this domain"></input>
-  </div>
-  <br />
-  <button type="submit"><%= action %></button>
-</form>

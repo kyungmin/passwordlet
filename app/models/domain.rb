@@ -27,19 +27,15 @@ class Domain < ActiveRecord::Base
 
     page = agent.get(url)
 
-    page.forms.each do |form|
-      if form.field_with(:type => "password")
-        if form.field_with(:type => "text")
-          form.field_with(:type => "text").value = username
-        else
-          form.field_with(:type => "email").value = username
-        end
-        form.field_with(:type => "password").value = password
-        form.submit
+    page.form.field_with(:type => "password") do |f|
+      if f.field_with(:type => "text")
+        f.field_with(:type => "text").value = username
+      else
+        f.field_with(:type => "email").value = username
       end
+      f.field_with(:type => "password").value = password
+      f.submit
     end
-
-    agent.get(url)
 
     cookies = {}
     agent.cookies.each do |cookie|

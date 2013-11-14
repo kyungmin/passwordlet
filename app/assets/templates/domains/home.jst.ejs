@@ -1,0 +1,36 @@
+<h1 class="home">Passwordlet</h1>
+<div class="password-icon"></div>
+<div class="call-to-action">
+  <span class="tagline">Transfer your passwords from your memory to Passwordlet.</span>
+  <a class="button" href="javascript:(function(){ _passwordlet_script=document.createElement('script'); _passwordlet_script.type='text/javascript'; _passwordlet_script.src='https://gentle-taiga-4945.herokuapp.com/bookmarklet'; document.getElementsByTagName('head')[0].appendChild(_passwordlet_script);})();">Drag this to bookmark</a>
+  <a class="button" href="/users/sign_up">Sign up</a>
+</div>
+<div class="section">
+  <h3>How it works</h3>
+  <p>Passwordlet is a JavaScript bookmarklet that logs you in with a single click. Your passwords are <a href="http://www.ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html">securely encrypted</a> in <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a> and they are only used to obtain cookies behind the scenes.</p>
+  <br />
+  <div class="how-it-works">
+    <div class="step-1"><p><b>Step 1.</b> Register your domain and account to Passwordlet</p></div>
+    <div class="step-2"><p><b>Step 2.</b> Go to the domain and click Passwordlet from your desktop or mobile browser</p></div>
+    <div class="step-3"><p><b>Step 3.</b> Now you're logged in!</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Behind the scenes</h3>
+  <p>With your permission, Passwordlet logs in to the domain using a library called <a href="http://mechanize.rubyforge.org/">Mechanize</a>. It then grabs the cookies and sets them to your browser. Once the cookie is set, you're safely logged in without manually entering your credentials. Read my <a href="">blog post</a> to learn more about technical challanges that I encountered during implementation.</p>
+  
+  <div class="behind-the-scenes">
+    <div id="key"></div>
+    <div id="cookie"></div>
+    <div class="passwordlet-icon"></div>
+    <div class="website-icon"></div>
+  </div>
+
+  <p class="disclaimer"><b>Disclaimer:</b> Most sites block logging in from different regions at the same time. Since Heroku runs apps from multiple regions, you might encounter login failures with some popular sites.</p>
+</div>
+
+<div class="section">
+  <h3>Credits</h3>
+  <p>Thanks to <a href="http://appacademy.io">App Academy</a> and some good friends who helped me along the way.</p>
+</div>

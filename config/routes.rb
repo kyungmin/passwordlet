@@ -9,7 +9,6 @@ Passwordlet::Application.routes.draw do
   resources :domains do
     collection do
       get "login"
-
     end    
   end
 end

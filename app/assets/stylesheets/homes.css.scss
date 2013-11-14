@@ -1,3 +1,147 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1.home {
+  margin-top: 76px;
+  margin-bottom: 10px;
+  font-size: 47px;
+  text-align: center;
+  font-weight: 100;
+  color: #555;
+}
+
+.section {
+  background-image: -webkit-linear-gradient(top, #f3f3f3, #f9f9f9);
+  padding: 30px 300px;
+
+  & p {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.7;
+    width: 80%;
+    margin-left: 30px;
+  }
+}
+
+.footer {
+  font-size: 11px;
+  color: #666;
+  padding: 10px 40px 30px;
+
+  a {
+    font-size: 11px;
+    color: #666;  
+  }
+}
+
+.call-to-action {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.tagline {
+  font-size: 13px;
+  color: #444;
+  font-weight: 500;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  display: block;
+}
+
+p.disclaimer {
+  color: #d25402;
+}
+
+.password-icon {
+  background-image: url('password.png');
+  width: 118px;
+  height: 8px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.how-it-works {
+  width: 500px;
+  margin: 0 auto;
+
+  & .step-1, & .step-2, & .step-3 {
+    width: 100px;
+    height: 100px;
+    visibility: hidden;
+    margin: 50px 0;
+
+    & p {
+      width: 200px;
+    }
+  }
+
+  & .step-1 {
+    background: url('key.png');
+
+    & p {
+      margin-left: 130px;
+    }
+  }
+
+  & .step-2 {
+    background: url('Responsive.png');
+    margin-left: 250px;
+
+    & p {
+      margin-left: -225px;
+    }
+  }
+
+  & .step-3 {
+    background: url('Magic.png');
+
+    & p {
+      margin-left: 130px;
+    }
+  }
+}
+
+.behind-the-scenes {
+  height: 300px;
+
+  & #cookie {
+    background: url('donut.png');
+    width: 100px;
+    height: 100px;
+    visibility: hidden;
+    z-index: 2;
+    float: right;
+    position: absolute;
+    right: 500px;
+    top: 1240px;
+  }
+
+  & #key {
+    background: url('key.png');
+    width: 100px;
+    height: 100px;
+    visibility: hidden;
+    float: left;
+    position: absolute;
+    left: 450px;
+    top: 1240px;
+  }
+
+  & .passwordlet-icon {
+    background: url('passwordlet-icon.png');
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-left: 100px;
+  }
+
+  & .website-icon {
+    background: url('user-interface.png');
+    width: 100px;
+    height: 100px;
+    float: right; 
+    margin-right: 200px;
+  }
+
+}
