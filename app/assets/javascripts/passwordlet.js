@@ -59,7 +59,7 @@ function playBTS() {
   animate(".one", "flipInX");
 
   setTimeout(function() {
-    $("#key").animate({ marginLeft: "+=33%" }, 800);
+    $("#key").animate({ marginLeft: "+=33%" }, 700);
 
     setTimeout(function(){
       exit("#key", "fadeOut");
