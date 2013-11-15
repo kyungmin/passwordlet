@@ -22,7 +22,7 @@ Passwordlet.Routers.AppRouter = Backbone.Router.extend({
   },
 
   index: function() {
-    if ($("current-user-id").text() == "") {
+    if ($("#current-user-id").text() == "") {
       window.location.href = "/users/sign_in";
     } else {
       var that = this;
@@ -36,7 +36,7 @@ Passwordlet.Routers.AppRouter = Backbone.Router.extend({
   },
 
   new: function() {
-    if ($("current-user-id").text() == "") {
+    if ($("#current-user-id").text() == "") {
       window.location.href = "/users/sign_in";
     } else {
       var domain = new Passwordlet.Models.Domain();
@@ -49,7 +49,7 @@ Passwordlet.Routers.AppRouter = Backbone.Router.extend({
   },
 
   edit: function(id) {
-    if ($("current-user-id").text() == "") {
+    if ($("#current-user-id").text() == "") {
       window.location.href = "/users/sign_in";
     } else {
       this._signedIn();
