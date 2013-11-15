@@ -21,35 +21,6 @@ $(document).ready(function(){
   $("h1.title").click(function(){
     Backbone.history.navigate("", { trigger: true });
   });
-
-  animate(".coachmark-icon", "tada");
-
-  $(window).scroll(function() {
-    if (inView(".how-it-works")) {
-      if ($(".step-1").css("visibility") == "hidden") {
-        animate(".step-1", "bounceIn");
-
-        setTimeout(function() {
-          animate(".step-2", "bounceIn");
-
-          setTimeout(function() {
-            animate(".step-3", "bounceIn");
-          }, 200);
-        }, 200);
-      }
-    }
-
-    if (inView(".behind-the-scenes")) {
-      if (play) {
-        playBTS();
-      }
-    }
-  });
-
-  $("#replay").click(function(){
-    resetAnimation();
-    playBTS();
-  });
 });
 
 function playBTS() {
