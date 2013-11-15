@@ -16,10 +16,12 @@
       <label for="domain_username">Username</label>
       <input type="text" id="domain_username" name="domain[domain_username]" value="<%= domain.escape("domain_username") %>" placeholder="Your username for this domain">
     </div>
-    <div class="row">
-      <label for="domain_password">Password</label>
-      <input type="password" id="domain_password" name="domain[password]" value="<%= domain.escape("password") %>" placeholder="Your password for this domain">
-    </div>
+    <% if (domain.isNew()) { %>
+      <div class="row">
+        <label for="domain_password">Password</label>
+        <input type="password" id="domain_password" name="domain[password]" placeholder="Your password for this domain">
+      </div>
+    <% } %>
     <br />
     <button type="submit"><%= action %></button>
   </form>

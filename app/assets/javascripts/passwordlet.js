@@ -21,6 +21,8 @@ $(document).ready(function(){
   $("h1.title").click(function(){
     Backbone.history.navigate("", { trigger: true });
   });
+  
+  animate(".coachmark-icon", "tada");
 
   $(window).scroll(function() {
     if (inView(".how-it-works")) {

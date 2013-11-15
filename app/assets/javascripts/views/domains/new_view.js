@@ -28,11 +28,7 @@ Passwordlet.Views.NewView = Backbone.View.extend({
     };
 
     var error = function (model, response) {
-      $(".errors").append("<ul>");
-      response.responseJSON.forEach(function(error) {
-        $(".errors").append("<li>" + error + "</li>");
-      });
-      $(".errors").append("</ul>");
+      $(".alert").text("response.responseText");
     };
 
     this.model.set(attr);

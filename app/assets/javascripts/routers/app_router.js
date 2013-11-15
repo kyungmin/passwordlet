@@ -41,18 +41,7 @@ Passwordlet.Routers.AppRouter = Backbone.Router.extend({
   },
 
   edit: function(id) {
-    var domain = Passwordlet.domains.get(id);
-    
-    // if(!domain){
-    //   domain = new Passwordlet.domains({ id: id });
-    //   domain.collection = Passwordlet.domains;
-    //   domain.fetch({
-    //     success: function() {
-    //       Passwordlet.domains.add(domain);
-    //     }
-    //   });
-    // }
-
+    var domain = Passwordlet.domains.get(id);    
     var editView = new Passwordlet.Views.NewView({
       model: domain
     });
