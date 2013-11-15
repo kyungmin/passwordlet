@@ -4,7 +4,7 @@
 
   $.ajax({
     type: "GET",
-    url: "https://gentle-taiga-4945.herokuapp.com/bookmarklet/signed_in",
+    url: "https://www.passwordlet.com/bookmarklet/signed_in",
     dataType: "jsonp",
     async: false,
     contentType: "application/json",
@@ -12,13 +12,13 @@
       if (data.message == "not signed in") {
         showOverlay("Please log in to Passwordlet.");
         setTimeout(function() {
-          showPasswordlet("https://gentle-taiga-4945.herokuapp.com/users/sign_in");
+          showPasswordlet("https://www.passwordlet.com/users/sign_in");
           hideOverlay();
         }, 1000);
       } else {
         $.ajax({
           type: "GET",
-          url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
+          url: "https://www.passwordlet.com/domains/login",
           data: { domain: location.hostname },
           dataType: "jsonp",
           async: false,
@@ -29,7 +29,7 @@
             if (data.message == "domain not found") {
               showOverlay("This domain is not registered in Passwordlet.");
               setTimeout(function() {
-                showPasswordlet("https://gentle-taiga-4945.herokuapp.com/#domains/new");
+                showPasswordlet("https://www.passwordlet.com/#domains/new");
               }, 1000);
             } else {
               setCookie(data);
@@ -87,7 +87,7 @@
       top: "30px",
       right: "30px",
       opacity: 0.8,
-      backgroundImage: 'url("https://gentle-taiga-4945.herokuapp.com/assets/close.png")',
+      backgroundImage: 'url("https://www.passwordlet.com/assets/close.png")',
       backgroundPosition: 0
     });
 
