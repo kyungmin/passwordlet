@@ -52,7 +52,6 @@ Passwordlet.Routers.AppRouter = Backbone.Router.extend({
     if ($("#current-user-id").text() == "") {
       window.location.href = "/users/sign_in";
     } else {
-      this._signedIn();
       var domain = Passwordlet.domains.get(id);    
       var editView = new Passwordlet.Views.NewView({
         model: domain
