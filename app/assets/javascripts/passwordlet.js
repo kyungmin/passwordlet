@@ -22,7 +22,7 @@ $(document).ready(function(){
     Backbone.history.navigate("", { trigger: true });
   });
 
-  $("#coachmark").toggleClass("animated tada");
+  animate("#coachmark", "tada");
 
   $(window).scroll(function() {
     if (inView(".how-it-works")) {

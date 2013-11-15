@@ -9,7 +9,7 @@
 <body>
   <h1 class="title">Passwordlet</h1>
   <div class="nav">
-    <a href="http://twitter.com/kyungmink">Feedback</a>
+    <a href="http://twitter.com/kyungmink" target="_blank">Feedback</a>
     <div style="display: inline-block; width: 16px;"></div>
     <% if current_user %>
       <%= link_to "Sign out", destroy_user_session_url, {:method => :delete} %>
