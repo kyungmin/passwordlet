@@ -10,6 +10,7 @@
     contentType: "application/json",
     success: function(data) {
       if (data.message == "not signed in") {
+        hideOverlay();
         showOverlay("Please log in to Passwordlet.");
         setTimeout(function() {
           showPasswordlet("https://gentle-taiga-4945.herokuapp.com/users/sign_in");
@@ -18,7 +19,7 @@
       } else {
         $.ajax({
           type: "GET",
-          url: "https://gentle-taiga-4945.herokuapp.com/domains/login",
+          url: "https://.com/domains/login",
           data: { domain: location.hostname },
           dataType: "jsonp",
           async: false,
@@ -60,7 +61,7 @@
   }
 
   function showPasswordlet(url) {
-    window.open(url, 'Passwordlet', 'width=400, height=400, left=100, top=100').focus();
+    window.open(url, 'Passwordlet', 'width=600, height=600, left=100, top=100').focus();
   }
 
   function hideOverlay() {
