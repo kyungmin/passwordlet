@@ -1,4 +1,26 @@
 Passwordlet.Routers.AppRouter = Backbone.Router.extend({
+  route: function (route, name, callback) {
+    if (!_.isRegExp(route)) route = this._routeToRegExp(route);
+    if (!callback) callback = this[name];
+    
+    var that = this;
+    _.wrap(callback, function (cb) {
+      if ($("#current-user-id").text() != "") {
+        cb();
+      } else {
+        window.location.href = "/users/sign_in";
+      }
+    })();
+    
+    Backbone.history.route(route, _.bind(function(fragment) {
+      var args = this._extractParameters(route, fragment);
+      callback && callback.apply(this, args);
+      this.trigger.apply(this, ['route:' + name].concat(args));
+      Backbone.history.trigger('route', this, name, args);
+    }, this));
+    return this;
+  },
+
   routes: {
     "": "home",
     "domains": "index",
