@@ -17,4 +17,16 @@
       </div>
     </div>
   <% }); %>
+
+  <div class="section">
+    <h4>Don't have your bookmarklet yet?</h4>
+    <div class="coachmark-icon"></div>
+    <a id="hello-passwordlet" class="button secondary" href="javascript:(function(){ _passwordlet_script=document.createElement('script'); _passwordlet_script.type='text/javascript'; _passwordlet_script.src='https://gentle-taiga-4945.herokuapp.com/bookmarklet'; document.getElementsByTagName('head')[0].appendChild(_passwordlet_script);})();">Hello, Passwordlet!</a>
+    <span class="coachmark-help">Just drag this bookmarklet to your bookmarks bar.</span>
+  </div>
 </div>
+
+
+<script type="text/javascript">
+  animate(".coachmark-icon", "tada");
+</script>

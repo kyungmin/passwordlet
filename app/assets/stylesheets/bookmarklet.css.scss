@@ -46,12 +46,27 @@ input[type="submit"], button, .button {
   }  
 }
 
+.secondary {
+  background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+  border: 1px solid #ddd;
+  color: #555;
+  font-weight: bold;
+  box-shadow: 0px 1px 1px #ddd;
+
+  &:hover {
+    cursor: pointer;
+    color: #555;
+    text-decoration: none;
+    background-image: -webkit-linear-gradient(top,#f1f1f1,#f1f1f1);
+  }
+}
+
 a {
   color: #555;
   font-size: 13px;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-weight: 200;
 }
 
@@ -76,6 +91,10 @@ h2 {
 
 h3 {
   font-size: 20px;
+  color: #555;
+}
+
+h4 {
   color: #555;
 }
 

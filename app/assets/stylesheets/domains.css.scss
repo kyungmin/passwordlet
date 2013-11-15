@@ -55,5 +55,31 @@
     opacity: 0.8;
   }
   
+  .section {
+    background-color: #eee;
+    background-image: none;
+    margin: 70px 0 30px;
+    padding: 10px 35px 30px;
+    border-radius: 2px;
+    width: 82%;
+  }
+
+  .coachmark-icon {
+    background-image: url('coachmark.png');
+    width: 30px;
+    height: 35px;
+    display: inline-block;
+    position: absolute;
+    margin-left: -30px;
+    margin-top: 35px;
+    visibility: hidden;
+  }
+
+  .coachmark-help {
+    font-size: 13px;
+    color: #666;
+    padding-top: 20px;
+    display: block;
+  }  
 }
 
